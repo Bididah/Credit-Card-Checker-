@@ -42,4 +42,11 @@ const validateCard = (card) => {
         return false  ;
     }
 }
+const findInvalidCarde = (arrayOfCard ) => { invalidCards = arrayOfCard.filter( ( element ) => {
+    if (validateCard(element) == false ) {
+        return element.reverse() ; 
+    }})
+ return invalidCards ; } 
+
+
 
