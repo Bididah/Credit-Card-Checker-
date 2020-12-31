@@ -26,26 +26,20 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 // Add your functions below:
 const validateCard = (card) => {
    let reversdNumberCard = card.reverse();
-   let timesOne = []; 
-   let doubled  = []; 
-   for (let index = 0; index < reversdNumberCard.length; index++) {
-       if (index % 2 == 0) {
-           timesOne.push(card[index]);
-       } else { 
-
-           doubled.push(card[index]); 
-       }    
-    }
-     doubled =  doubled.map(x => x * 2)
-     doubled =  doubled.map(  x => {
-        if (x  >= 10) {
+   let timesOne = reversdNumberCard.filter((element, index) => index%2 == 0); 
+   let doubled  = reversdNumberCard.filter((element, index) => index%2 == 1); 
+     doubled =  doubled.map(x => {  
+        x = x * 2 
+         if (x  >= 10) {
             return x-9 ; 
         } else {
             return x ;
-        }
-    })
-      
-    return {x : doubled , y : timesOne}  ;   
+        } })
+    let n = timesOne.reduce((total,num ) => total + num) + doubled.reduce((total,num) => total + num )
+    if (n % 10 == 0 ) {
+        return true  ; 
+    } else { 
+        return false  ;
+    }
 }
-console.log(invalid1)
-console.log(validateCard(invalid1));
+
