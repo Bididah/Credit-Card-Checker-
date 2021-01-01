@@ -25,9 +25,9 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 const validateCard = (card) => {
-   let reversdNumberCard = card.reverse();
-   let timesOne = reversdNumberCard.filter((element, index) => index%2 == 0); 
-   let doubled  = reversdNumberCard.filter((element, index) => index%2 == 1); 
+  reversdNumberCard = card.reverse();
+  timesOne = reversdNumberCard.filter((element, index) => index%2 == 0); 
+  doubled  = reversdNumberCard.filter((element, index) => index%2 == 1); 
      doubled =  doubled.map(x => {  
         x = x * 2 
          if (x  >= 10) {
@@ -43,10 +43,37 @@ const validateCard = (card) => {
     }
 }
 const findInvalidCarde = (arrayOfCard ) => { invalidCards = arrayOfCard.filter( ( element ) => {
-    if (validateCard(element) == false ) {
-        return element.reverse() ; 
-    }})
+    if ( !validateCard(element) ) {return element.reverse() ;   }})
  return invalidCards ; } 
+const idInvalidCardCompanies = (arrayOfCard) => {
+   invalidCardCompanies = [] ; 
+   arrayOfCard.forEach((element) => {
+       Company  = ''
+       switch (element[0]) {
+           case 3:
+               Company =  "Amex";
+               break;
+            case 4: 
+                Company =  "Visa";
+                break;
+            case 5:
+                Company =  "MasterCard"; 
+                break;
+            case 6:
+                Company = "Discover";
+                break;
+           default:
+               Company = 'Campany not found';
+               break;
+       }
+       if ( !invalidCardCompanies.includes(Company) ) {
+           invalidCardCompanies.push(Company)
+        }     
+   }) 
+     return invalidCardCompanies; }
 
 
+
+
+    
 
